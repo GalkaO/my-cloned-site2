@@ -1,25 +1,31 @@
+import { RevealText, type Segment } from "@/components/ui/RevealText";
+
+const HERO_SEGMENTS: Segment[] = [
+  { text: "Transforming", italic: true },
+  { text: "Brands,", lineBreak: true },
+  { text: "Building" },
+  { text: "Futures", italic: true, noSpace: true },
+];
+
 export function Hero() {
   return (
     <section
       className="relative w-full overflow-hidden"
       style={{ height: "var(--full-height, 100svh)" }}
     >
-      {/* Animated blue silk background */}
       <div className="absolute inset-0 z-0 silk-bg" aria-hidden="true" />
 
-      {/* Center headline */}
       <div className="absolute top-1/2 left-1/2 z-1 w-full -translate-x-1/2 -translate-y-1/2 px-5 text-center text-white flex justify-center items-center">
-        <h1 className="h1 inline sm:block w-fit">
-          <em className="italic">Transforming</em>
-          <span> Brands,</span>
-          <span className="inline sm:hidden"> </span>
-          <br className="hidden sm:inline" />
-          <span>Building </span>
-          <em className="italic">Futures</em>
-        </h1>
+        <RevealText
+          as="h1"
+          className="h1 inline sm:block w-fit"
+          segments={HERO_SEGMENTS}
+          immediate
+          startDelay={0.2}
+          staggerDelay={0.09}
+        />
       </div>
 
-      {/* Bottom tagline */}
       <div className="absolute bottom-8 left-1/2 z-1 w-full -translate-x-1/2 px-5 text-center">
         <p className="p1 text-white">
           A New York–based brand transformation studio working across strategy, design, and digital.
@@ -35,7 +41,7 @@ export function Hero() {
             radial-gradient(40% 60% at 30% 80%, rgba(80, 100, 230, 0.8) 0%, transparent 65%),
             linear-gradient(135deg, #0010d8 0%, #1f3fff 25%, #0a1ab8 55%, #1030e8 100%);
           filter: saturate(1.1) contrast(1.05);
-          animation: silk-drift 22s ease-in-out infinite;
+          animation: silk-drift 22s cubic-bezier(0.4, 0, 0.2, 1) infinite;
           background-size: 220% 220%, 200% 200%, 200% 200%, 200% 200%, 100% 100%;
         }
         @keyframes silk-drift {

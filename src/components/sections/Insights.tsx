@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import MuxPlayer from "@mux/mux-player-react";
 import type { InsightCard } from "@/types";
+import { BlueButton } from "@/components/ui/BlueButton";
 
 const INSIGHTS: InsightCard[] = [
   {
@@ -50,9 +51,9 @@ export function Insights() {
               The latest from <em className="italic">our world and beyond</em>.
             </h2>
           </div>
-          <Link href="/insights" className="btn-blue self-start md:self-end">
+          <BlueButton href="/insights" className="self-start md:self-end">
             Explore All
-          </Link>
+          </BlueButton>
         </div>
       </div>
 

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { WorkCard } from "@/types";
 import { cn } from "@/lib/utils";
+import { BlueButton } from "@/components/ui/BlueButton";
 
 const WORK: WorkCard[] = [
   {
@@ -79,9 +80,9 @@ export function SelectedWork() {
               Work created at moments where change becomes <em className="italic">inevitable by design</em>.
             </h2>
           </div>
-          <Link href="/work" className="btn-blue self-start md:self-end">
+          <BlueButton href="/work" className="self-start md:self-end">
             All Work
-          </Link>
+          </BlueButton>
         </div>
       </div>
 

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { BlueButton } from "@/components/ui/BlueButton";
 
 export function Approach() {
   return (
@@ -13,9 +13,7 @@ export function Approach() {
           <h2 className="h2 max-w-4xl">
             Growing Products by Redefining <em className="italic">Culture</em>.
           </h2>
-          <Link href="/approach" className="btn-blue w-fit">
-            Our Approach
-          </Link>
+          <BlueButton href="/approach">Our Approach</BlueButton>
         </div>
 
         {/* Background image */}
