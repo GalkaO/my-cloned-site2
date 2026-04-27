@@ -1,130 +1,224 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
+@theme {
+  /* === COLORS === */
+  --color-white: #f7f7f7;
+  --color-black: #000014;
+  --color-blue: #0000f8;
+  --color-light-blue: #1869f4;
+  --color-orange: #f49518;
+  --color-green: #00f2a2;
+  --color-purple: #b217f3;
+  --color-gray: #e0e0e3;
+  --color-light-gray: rgb(224 224 227 / 0.4);
+  --color-dark-gray: rgb(0 0 20 / 0.4);
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
-  --font-heading: var(--font-sans);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+  /* === FONT FAMILIES === */
+  --font-sans: var(--font-founders-grotesk), "FoundersGrotesk Fallback", system-ui, sans-serif;
+  --font-serif: var(--font-martina-plantijn), "MartinaPlantijn Fallback", Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* === FLUID TYPOGRAPHY === */
+  --font-size-h1: clamp(2.3125rem, 0.85rem + 6vw, 6.25rem);
+  --font-leading-h1: clamp(3.125rem, 1.7786rem + 5.5238vw, 6.75rem);
+  --font-size-h2: clamp(2rem, 1.2958rem + 3.0047vw, 4rem);
+  --font-leading-h2: clamp(2.5rem, 1.8036rem + 2.8571vw, 4.375rem);
+  --font-size-h3: clamp(1.75rem, 1.2857rem + 1.9048vw, 3rem);
+  --font-leading-h3: 1.1;
+  --font-size-p1: 1.25rem;
+  --font-leading-p1: 1.5rem;
+  --font-size-p2: 1rem;
+  --font-leading-p2: 1.375rem;
+
+  /* === SPACING & LAYOUT === */
+  --container-6xl: 72rem;
+  --container-margin: clamp(1.25rem, 0.7857rem + 1.9048vw, 2.5rem);
+  --grid-gap: 1.25rem;
+  --grid-columns: 12;
+
+  /* === RADIUS === */
+  --radius-xs: 0.125rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+
+  /* === EFFECTS === */
+  --blur-lg: 16px;
+  --aspect-video: 16 / 9;
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --default-transition-duration: 150ms;
+  --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* === EXTRA SPACING SCALE === */
+  /* Tailwind v4 spacing scale: spacing-N = N * 0.25rem.
+     The site uses pt-15 (60px) and pt-30 (120px) liberally — ensure they exist. */
+  --spacing-15: 3.75rem;
+  --spacing-30: 7.5rem;
+
+  /* === VIEWPORT HEIGHT === */
+  /* Will be set via JS for accurate mobile-safe heights. Falls back to vh. */
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-}
-
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  /* Set --svh = 1% of small viewport height. Updated by JS for mobile correctness. */
+  --svh: 1vh;
+  --dvh: 1vh;
+  --lvh: 1vh;
+  --full-height: calc(var(--svh) * 100);
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
   html {
-    @apply font-sans;
+    background: var(--color-white);
+    color: var(--color-black);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background: var(--color-white);
+    color: var(--color-black);
+    font-family: var(--font-sans);
+  }
+
+  /* Hide scrollbar — match new.studio's clean look while preserving scroll. */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: clip;
+  }
+}
+
+@layer components {
+  /* === DISPLAY HEADINGS === */
+  .h1 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-h1);
+    line-height: var(--font-leading-h1);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  .h2 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-h2);
+    line-height: var(--font-leading-h2);
+    font-weight: 400;
+    letter-spacing: -0.005em;
+  }
+
+  .h3 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-h3);
+    line-height: var(--font-leading-h3);
+    font-weight: 400;
+  }
+
+  .p1 {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-p1);
+    line-height: var(--font-leading-p1);
+    font-weight: 400;
+  }
+
+  .p2 {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-p2);
+    line-height: var(--font-leading-p2);
+    font-weight: 400;
+  }
+
+  /* === CONTAINER === */
+  .container {
+    width: 100%;
+    max-width: calc(var(--container-6xl) + 2 * var(--container-margin));
+    margin-inline: auto;
+    padding-inline: var(--container-margin);
+  }
+
+  /* === GRID UTILITIES === */
+  .custom-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--grid-gap);
+  }
+
+  @media (min-width: 640px) {
+    .custom-grid {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+  }
+
+  .custom-flex-grid {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* === BUTTON: BLUE PILL CTA === */
+  .btn-blue {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-blue);
+    color: var(--color-white);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 700;
+    padding: 0.625rem 1rem;
+    border-radius: var(--radius-md);
+    transition: opacity 200ms var(--ease-out);
+  }
+
+  .btn-blue:hover {
+    opacity: 0.85;
+  }
+
+  /* === SCROLL ANIM HELPERS === */
+  .text-render {
+    will-change: transform, opacity;
+  }
+}
+
+@layer utilities {
+  /* Tailwind v4 doesn't ship pt-15 / pt-30 by default; we use them throughout. */
+  .pt-15 { padding-top: 3.75rem; }
+  .pb-15 { padding-bottom: 3.75rem; }
+  .py-15 { padding-block: 3.75rem; }
+  .mt-15 { margin-top: 3.75rem; }
+  .mb-15 { margin-bottom: 3.75rem; }
+  .-mt-15 { margin-top: -3.75rem; }
+  .gap-15 { gap: 3.75rem; }
+
+  .pt-30 { padding-top: 7.5rem; }
+  .pb-30 { padding-bottom: 7.5rem; }
+  .py-30 { padding-block: 7.5rem; }
+  .mt-30 { margin-top: 7.5rem; }
+  .-mt-30 { margin-top: -7.5rem; }
+  .gap-30 { gap: 7.5rem; }
+
+  /* Visually hide nav links when collapsed (used by Header on scroll). */
+  .nav-hide-collapsed {
+    display: none !important;
+  }
+
+  /* Mux player & video utilities */
+  .aspect-video {
+    aspect-ratio: 16 / 9;
   }
 }

@@ -1,9 +1,23 @@
+import { Header } from "@/components/sections/Header";
+import { Hero } from "@/components/sections/Hero";
+import { AmbitionPress } from "@/components/sections/AmbitionPress";
+import { SelectedWork } from "@/components/sections/SelectedWork";
+import { Approach } from "@/components/sections/Approach";
+import { Insights } from "@/components/sections/Insights";
+import { Footer } from "@/components/sections/Footer";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen items-center justify-center">
-      <p className="text-muted-foreground">
-        Clone target not yet built. Run <code className="font-mono text-foreground">/clone-website</code> to start.
-      </p>
-    </main>
+    <>
+      <Header />
+      <main>
+        <Hero />
+        <AmbitionPress />
+        <SelectedWork />
+        <Approach />
+        <Insights />
+      </main>
+      <Footer />
+    </>
   );
 }
